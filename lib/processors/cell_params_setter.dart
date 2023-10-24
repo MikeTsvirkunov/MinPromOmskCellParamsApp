@@ -5,6 +5,7 @@ import 'package:minprom_of_omsk_signal/global_values/value_container.dart';
 import 'package:minprom_of_omsk_signal/interfaces/interface_action.dart';
 import 'package:minprom_of_omsk_signal/interfaces/interface_extractable.dart';
 import 'package:signal_strength/signal_strength.dart';
+// import 'package:telephony/telephony.dart';
 
 class SetCellParamsInGlobal extends IAction {
   @override

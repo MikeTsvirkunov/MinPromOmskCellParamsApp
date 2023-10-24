@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:minprom_of_omsk_signal/coords_display.dart';
+import 'package:minprom_of_omsk_signal/coords_display/coords_display.dart';
 import 'package:minprom_of_omsk_signal/signal_strenth_display/signal_strenth_display.dart';
 
 void main() {

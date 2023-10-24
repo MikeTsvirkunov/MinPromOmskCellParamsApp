@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:minprom_of_omsk_signal/container/container_extractor.dart';
+import 'package:minprom_of_omsk_signal/global_values/constant_container.dart';
+import 'package:minprom_of_omsk_signal/global_values/value_container.dart';
 import 'dart:async';
+
+import 'package:minprom_of_omsk_signal/interfaces/interface_action.dart';
 // import 'package:telephony/telephony.dart';
 
 
@@ -12,11 +16,7 @@ class PositionDisplay extends StatefulWidget {
 }
 
 class _PositionDisplayState extends State<PositionDisplay> {
-  double x = 1;
-  double y = 1;
   late Timer _timer;
-  late List<int>? getCellularSignalStrength;
-  int k = 0;
 
   @override
   void initState() {
@@ -26,10 +26,7 @@ class _PositionDisplayState extends State<PositionDisplay> {
 
   void _getNetworkStats() async {
     _timer.cancel();
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
-    k += 1;
-    x = position.latitude;
-    y = position.longitude;
+    ContainerExtractor.extract<IAction>(constantContainer, 'SetCoordsParamsInGlobal').action(null);
     setState(() {});
     _timer = Timer(const Duration(seconds: 1), _getNetworkStats);
   }
@@ -44,19 +41,10 @@ class _PositionDisplayState extends State<PositionDisplay> {
     return Center(
       child: Column(
         children: [
-          Text('x: $x'),
-          Text('y: $y'),
+          Text('x: ${ContainerExtractor.extract(valueContainer, 'currentLatitude') ?? 'Waiting'}'),
+          Text('y: ${ContainerExtractor.extract(valueContainer, 'currentLongitude') ?? 'Waiting'}'),
         ],
       ),
     );
   }
-}
-
-class NetworkStats {
-  NetworkStats(this.hasCellular, this.hasWifi, this.wifiSignalStrength,
-      this.cellularSignalStrength);
-  bool hasCellular;
-  bool hasWifi;
-  int? wifiSignalStrength;
-  List<int>? cellularSignalStrength;
 }

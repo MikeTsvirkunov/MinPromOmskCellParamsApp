@@ -15,10 +15,6 @@ class SignalStrenthDisplay extends StatefulWidget {
 
 class _SignalStrenthDisplayState extends State<SignalStrenthDisplay> {
   late Timer _timer;
-  dynamic isOnCellular=true;
-  dynamic isOnWifi=true;
-  dynamic getWifiSignalStrength=1;
-  dynamic getCellularSignalStrength=[];
   int k = 0;
 
 
@@ -32,10 +28,6 @@ class _SignalStrenthDisplayState extends State<SignalStrenthDisplay> {
     _timer.cancel();
     k+=1;
     ContainerExtractor.extract<IAction>(constantContainer, 'SetCellParamsInGlobal').action(null);
-    isOnCellular = ContainerExtractor.extract(valueContainer, 'isCellAvailable');
-    isOnWifi = ContainerExtractor.extract(valueContainer, 'isWiFiAvailable');
-    getWifiSignalStrength = ContainerExtractor.extract(valueContainer, 'wifiSignalStrength');
-    getCellularSignalStrength = ContainerExtractor.extract(valueContainer, 'cellSignalStrength');
     setState(() {});
     _timer = Timer(const Duration(seconds: 1), _getNetworkStats);
   }
@@ -50,10 +42,10 @@ class _SignalStrenthDisplayState extends State<SignalStrenthDisplay> {
     return Center(
       child: Column(
         children: [
-          Text('Cell strength: $getCellularSignalStrength'),
-          Text('Wifi strength: $getWifiSignalStrength'),
-          Text('On cellular: $isOnCellular'),
-          Text('On wifi: $isOnWifi'),
+          Text('Cell strength: ${ContainerExtractor.extract(valueContainer, 'isCellAvailable')}'),
+          Text('Wifi strength: ${ContainerExtractor.extract(valueContainer, 'isCellAvailable')}'),
+          Text('On cellular: ${ContainerExtractor.extract(valueContainer, 'isWiFiAvailable')}'),
+          Text('On wifi: ${ContainerExtractor.extract(valueContainer, 'cellSignalStrength')}'),
           Text('f = $k')
         ],
       ),
