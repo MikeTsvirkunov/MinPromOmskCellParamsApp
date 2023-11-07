@@ -35,6 +35,7 @@ class _SignalStrenthDisplayState extends State<SignalStrenthDisplay> {
   @override
   void dispose() {
     super.dispose();
+    _timer.cancel();
   }
 
   @override
@@ -43,9 +44,10 @@ class _SignalStrenthDisplayState extends State<SignalStrenthDisplay> {
       child: Column(
         children: [
           Text('Cell strength: ${ContainerExtractor.extract(valueContainer, 'isCellAvailable')}'),
-          Text('Wifi strength: ${ContainerExtractor.extract(valueContainer, 'isCellAvailable')}'),
-          Text('On cellular: ${ContainerExtractor.extract(valueContainer, 'isWiFiAvailable')}'),
-          Text('On wifi: ${ContainerExtractor.extract(valueContainer, 'cellSignalStrength')}'),
+          Text('Wifi strength: ${ContainerExtractor.extract(valueContainer, 'isWiFiAvailable')}'),
+          Text('On cellular: ${ContainerExtractor.extract(valueContainer, 'cellSignalStrength')}'),
+          Text('On wifi: ${ContainerExtractor.extract(valueContainer, 'wifiSignalStrength')}'),
+          Text('On wifi: ${ContainerExtractor.extract(valueContainer, 'gsmCellTowerId')}'),
           Text('f = $k')
         ],
       ),
@@ -53,13 +55,3 @@ class _SignalStrenthDisplayState extends State<SignalStrenthDisplay> {
   }
 
 }
-
-class NetworkStats {
-  NetworkStats(this.hasCellular, this.hasWifi, this.wifiSignalStrength,
-      this.cellularSignalStrength);
-  bool hasCellular;
-  bool hasWifi;
-  int? wifiSignalStrength;
-  List<int>? cellularSignalStrength;
-}
-

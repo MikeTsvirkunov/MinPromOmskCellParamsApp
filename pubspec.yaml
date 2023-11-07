@@ -41,6 +41,9 @@ dependencies:
   ioc_container: ^1.0.12
   get_it: ^7.6.4
   telephony: ^0.2.0
+  flutter_map: ^6.0.1
+  permission_handler: ^11.0.1
+  path_provider: ^2.1.1
 
 dev_dependencies:
   flutter_test:
