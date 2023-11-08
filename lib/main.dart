@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:minprom_of_omsk_signal/app_widget.dart';
 import 'package:minprom_of_omsk_signal/checkers/require_premission.dart';
+import 'package:minprom_of_omsk_signal/container/container_extractor.dart';
+import 'package:minprom_of_omsk_signal/global_values/constant_container.dart';
+import 'package:minprom_of_omsk_signal/interfaces/interface_action.dart';
+import 'package:minprom_of_omsk_signal/interfaces/interface_extendable.dart';
+import 'package:minprom_of_omsk_signal/interfaces/interface_extractable.dart';
 
 void main() {
   runApp(const Main());
@@ -14,6 +19,7 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   late Future<bool> locationPremission;
+  late Future<void> initiation;
   @override
   void initState() {
     super.initState();

@@ -30,10 +30,7 @@ class _CurrentDataBlockState extends State<CurrentDataBlock> {
   void _getNetworkStats() async {
     _timer.cancel();
     k += 1;
-    ContainerExtractor.extract<IAction>(
-      constantContainer, 
-      'SetCellParamsInGlobal'
-    ).action(null);
+    ContainerExtractor.extract<IAction>(constantContainer, 'UpdateCurrentDataBlock').action(DefaultContainer({'params': [null, null]}));
     setState(() {});
     _timer = Timer(const Duration(seconds: 1), _getNetworkStats);
   }

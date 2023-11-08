@@ -16,8 +16,8 @@ class GenerateExtraOptionsForCurrentDataBlock extends IStrategy{
   /// GenerateExtraOptionsForCurrentDataBlock.execute<List>(x)
   /// ```
   @override
-  T execute<T>(IExtractable arg) {
-    Map<String, dynamic> paramsValuesMap = ContainerExtractor.extract<Map<String, dynamic>>(arg, 'ParamsValueMap');
+  T execute<T>(IExtractable? arg) {
+    Map<String, dynamic> paramsValuesMap = ContainerExtractor.extract<Map<String, dynamic>>(arg!, 'ParamsValueMap');
     Map<String, IStrategy> paramsProcessors = ContainerExtractor.extract<Map<String, IStrategy>>(constantContainer, 'ExtraOptionsKeyProcessorMap');
     Map<String, dynamic> processedParamsValues = paramsValuesMap.map((key, value) => MapEntry(key, paramsProcessors[key]!.execute(DefaultContainer({'Parameter': value}))));
     List<Widget> extraOptionsList = [];
