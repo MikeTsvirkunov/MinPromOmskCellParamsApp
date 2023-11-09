@@ -6,8 +6,9 @@ import 'package:minprom_of_omsk_signal/container/default_container.dart';
 class HistoryDataBlock extends StatefulWidget {
   final Object cellStrenth;
   final Object notation;
-  final Object street;
-  const HistoryDataBlock({Key? key, required this.cellStrenth, required this.notation, required this.street}) : super(key: key);
+  final DefaultContainer params;
+  
+  const HistoryDataBlock({Key? key, required this.cellStrenth, required this.notation, required this.params}) : super(key: key);
 
   @override
   State<HistoryDataBlock> createState() => _HistoryDataBlockState();
@@ -31,7 +32,7 @@ class _HistoryDataBlockState extends State<HistoryDataBlock> {
             meterTextSize: 14,
           ),
           AnotherOptionsFragment(
-            params: DefaultContainer({'ParamsValueMap': {'Район': widget.street.toString()}})
+            params: widget.params
           )
         ]
       ),

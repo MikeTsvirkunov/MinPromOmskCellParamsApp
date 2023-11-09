@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:minprom_of_omsk_signal/app/data_page/current_data_block/current_data_block.dart';
-import 'package:minprom_of_omsk_signal/app/data_page/history_list.dart';
 import 'package:minprom_of_omsk_signal/container/container_extender.dart';
 import 'package:minprom_of_omsk_signal/container/container_extractor.dart';
 import 'package:minprom_of_omsk_signal/global_values/constant_container.dart';
@@ -8,7 +7,6 @@ import 'package:minprom_of_omsk_signal/global_values/value_container.dart';
 import 'package:minprom_of_omsk_signal/interfaces/interface_action.dart';
 import 'package:minprom_of_omsk_signal/interfaces/interface_strategy.dart';
 import 'package:minprom_of_omsk_signal/processors/builders/build_list_from_data.dart';
-import 'package:minprom_of_omsk_signal/processors/save_data.dart';
 
 class DataPage extends StatefulWidget {
   const DataPage({Key? key}) : super(key: key);
@@ -20,7 +18,6 @@ class DataPage extends StatefulWidget {
 class _DataPageState extends State<DataPage> {
   @override
   Widget build(BuildContext context) {
-    const hl = HistoryList();
     return Flex(
       direction: Axis.vertical,
       children: [
@@ -42,7 +39,7 @@ class _DataPageState extends State<DataPage> {
                   children: [
                     const Text('Мои замеры'),
                     const Spacer(),
-                    IconButton(onPressed: (){}, icon: Icon(Icons.import_export_outlined))
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.import_export_outlined))
                   ],
                 ),
                 Flexible(

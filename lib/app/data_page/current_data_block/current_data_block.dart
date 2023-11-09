@@ -57,8 +57,10 @@ class _CurrentDataBlockState extends State<CurrentDataBlock> {
             params: DefaultContainer(
               {
                 'ParamsValueMap': {
-                  'Район': 'ул. Пушкина, д. Калатушкина', 
-                  'ID вышки': ContainerExtractor.extract(valueContainer, 'gsmCellTowerId') ?? "Waiting"
+                  'street': 'ул. Пушкина, д. Калатушкина', 
+                  'longitude': ContainerExtractor.extract(valueContainer, 'currentLongitude') ?? "Waiting",
+                  'latitude': ContainerExtractor.extract(valueContainer, 'currentLongitude') ?? "Waiting",
+                  'cellID': ContainerExtractor.extract(valueContainer, 'gsmCellTowerId') ?? "Waiting"
                 }
               }
             )

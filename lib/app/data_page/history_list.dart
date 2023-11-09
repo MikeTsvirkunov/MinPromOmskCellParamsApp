@@ -3,7 +3,6 @@ import 'package:minprom_of_omsk_signal/container/container_extractor.dart';
 import 'package:minprom_of_omsk_signal/global_values/value_container.dart';
 import 'package:minprom_of_omsk_signal/processors/builders/build_list_from_data.dart';
 import 'package:minprom_of_omsk_signal/processors/load_saved_data.dart';
-import 'package:minprom_of_omsk_signal/processors/set_history_data.dart';
 
 class HistoryList extends StatefulWidget {
   const HistoryList({Key? key}) : super(key: key);

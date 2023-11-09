@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minprom_of_omsk_signal/app/functions/on_start_initiation.dart';
 import 'package:minprom_of_omsk_signal/app_widget.dart';
 import 'package:minprom_of_omsk_signal/checkers/require_premission.dart';
 import 'package:minprom_of_omsk_signal/container/container_extractor.dart';
@@ -23,7 +24,7 @@ class _MainState extends State<Main> {
   @override
   void initState() {
     super.initState();
-    locationPremission = askLocationPermission();
+    initiation = onStartInitiation();
   }
 
   @override
@@ -34,10 +35,10 @@ class _MainState extends State<Main> {
         child: Scaffold(
           backgroundColor: Color.fromARGB(255, 236, 236, 236),
           body: FutureBuilder(
-            future: locationPremission, 
-            builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            future: initiation, 
+            builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Text('Please wait its loading...');
+                return const SizedBox(child: Center(child: Text('Please wait its loading...')));
               } else {
                 if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');

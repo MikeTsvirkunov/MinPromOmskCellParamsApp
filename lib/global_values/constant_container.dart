@@ -15,10 +15,28 @@ import 'package:signal_strength/signal_strength.dart';
 ConstantContainer constantContainer = ConstantContainer(
   {
     'ExtraOptionsKeyProcessorMap': {
-      'Район': NeitralParamProcessor(),
-      'Оператор связи': NeitralParamProcessor(),
-      'Критерий 3': NeitralParamProcessor(),
-      'ID вышки': NeitralParamProcessor()
+      'street': NeitralParamProcessor(),
+      'mobileOperator': NeitralParamProcessor(),
+      'cellID': NeitralParamProcessor(),
+      'longitude': NeitralParamProcessor(),
+      'latitude': NeitralParamProcessor(),
+      'time': NeitralParamProcessor(),
+      'date': NeitralParamProcessor(),
+      'cellSignalStrength': NeitralParamProcessor(),
+      'currentDateTime': NeitralParamProcessor(),
+      'currentCellId': NeitralParamProcessor(),
+    },
+    'ExtraOptionsValueProcessorMap': {
+      'street': NeitralParamProcessor(),
+      'mobileOperator': NeitralParamProcessor(),
+      'cellID': NeitralParamProcessor(),
+      'longitude': NeitralParamProcessor(),
+      'latitude': NeitralParamProcessor(),
+      'time': NeitralParamProcessor(),
+      'date': NeitralParamProcessor(),
+      'cellSignalStrength': NeitralParamProcessor(),
+      'currentDateTime': NeitralParamProcessor(),
+      'currentCellId': NeitralParamProcessor(),
     },
     'SignalParamsExtractor': SignalStrength(),
     'SetCellParamsInGlobal': SetCellParamsInGlobal(),
