@@ -25,6 +25,8 @@ ConstantContainer constantContainer = ConstantContainer(
       'cellSignalStrength': NeitralParamProcessor(),
       'currentDateTime': NeitralParamProcessor(),
       'currentCellId': NeitralParamProcessor(),
+      'currentLatitude': NeitralParamProcessor(),
+      'currentLongitude': NeitralParamProcessor(),
     },
     'ExtraOptionsValueProcessorMap': {
       'street': NeitralParamProcessor(),
@@ -37,6 +39,8 @@ ConstantContainer constantContainer = ConstantContainer(
       'cellSignalStrength': NeitralParamProcessor(),
       'currentDateTime': NeitralParamProcessor(),
       'currentCellId': NeitralParamProcessor(),
+      'currentLatitude': NeitralParamProcessor(),
+      'currentLongitude': NeitralParamProcessor(),
     },
     'SignalParamsExtractor': SignalStrength(),
     'SetCellParamsInGlobal': SetCellParamsInGlobal(),

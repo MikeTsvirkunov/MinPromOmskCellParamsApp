@@ -11,24 +11,41 @@ class MapDisplay extends StatefulWidget {
   @override
   State<MapDisplay> createState() => _MapDisplayState();
 }
-class _MapDisplayState extends State<MapDisplay> {  
+// вставка удаление пораждают две табоицы
+class _MapDisplayState extends State<MapDisplay> {
   @override
   Widget build(BuildContext context) {
-    return FlutterMap(
+    return 
+    Scaffold(
+      appBar: AppBar(
+        leading: Container(
+          color: Colors.amber,
+          height: 40,
+        ),
+      ),
+      body: FlutterMap(
       options: MapOptions(
+        interactionOptions: const InteractionOptions(
+          debugMultiFingerGestureWinner: true,
+          enableMultiFingerGestureRace: true,
+          pinchMoveThreshold: 10.0,
+          pinchMoveWinGestures: MultiFingerGesture.pinchZoom,
+          rotationThreshold: 10,
+          rotationWinGestures: 10
+        ),
         minZoom: 8,
         cameraConstraint: CameraConstraint.containCenter(bounds: LatLngBounds(
           LatLng(
-            ContainerExtractor.extract(valueContainer, 'currentLatitude')+5, 
-            ContainerExtractor.extract(valueContainer, 'currentLongitude')+5
+            ContainerExtractor.extract(valueContainer, 'currentLatitude')+1,
+            ContainerExtractor.extract(valueContainer, 'currentLongitude')+1
           ),
           LatLng(
-            ContainerExtractor.extract(valueContainer, 'currentLatitude')-5,
-            ContainerExtractor.extract(valueContainer, 'currentLongitude')-5
+            ContainerExtractor.extract(valueContainer, 'currentLatitude')-1,
+            ContainerExtractor.extract(valueContainer, 'currentLongitude')-1
           ),
         )),
         initialCenter: LatLng(
-          ContainerExtractor.extract(valueContainer, 'currentLatitude'), 
+          ContainerExtractor.extract(valueContainer, 'currentLatitude'),
           ContainerExtractor.extract(valueContainer, 'currentLongitude')
         ),
         initialZoom: 9.2,
@@ -38,11 +55,11 @@ class _MapDisplayState extends State<MapDisplay> {
           urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
           userAgentPackageName: 'com.example.app',
         ),
-        
-        Container(
-          color: Colors.amber,
-          height: 100,
-        ),
+
+        // Container(
+        //   color: Colors.amber,
+        //   height: 100,
+        // ),
         // RichAttributionWidget(
         //   attributions: [
         //     TextSourceAttribution(
@@ -53,6 +70,7 @@ class _MapDisplayState extends State<MapDisplay> {
         //   ],
         // ),
       ],
-    );
+    ));
   }
 }
+
