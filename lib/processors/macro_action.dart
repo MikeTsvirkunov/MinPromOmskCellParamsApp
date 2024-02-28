@@ -1,4 +1,5 @@
 import 'package:minprom_of_omsk_signal/container/container_extractor.dart';
+import 'package:minprom_of_omsk_signal/global_values/value_container.dart';
 import 'package:minprom_of_omsk_signal/interfaces/interface_action.dart';
 import 'package:minprom_of_omsk_signal/interfaces/interface_extractable.dart';
 
@@ -8,7 +9,10 @@ class MacroAction extends IAction {
   @override
   void action(IExtractable? arg) {
     List<IExtractable?> params = ContainerExtractor.extract<List<IExtractable?>>(arg!, 'params');
-    Map.fromIterables(listOfActions, params).forEach((key, value) {key.action(value);});
+    Map.fromIterables(listOfActions, params).forEach((key, value) {
+      // print(key);
+      key.action(value);
+    });
   }
 }
 // class N extends Iterable{

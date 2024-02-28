@@ -18,7 +18,7 @@ class SetCellParamsInGlobal extends IAction {
     var gcss = await x.getCellularSignalStrength();
     var gwfss = await x.getWifiSignalStrength();
     var gsmCellTowerId = await platform.invokeMethod('getGSMCellTowerId');
-    var gsmCellStrength = await platform.invokeMethod('getLTESignalStrength');
+    var gsmCellStrength =await platform.invokeMethod('getLTESignalStrength');
     var cdmaCellStrength = await platform.invokeMethod('getCDMACellSignalStrength');
     var gsmCellSignalStrength = await platform.invokeMethod('getGsmCellSignalStrength');
     var signalStrengthLevel = await platform.invokeMethod('getSignalStrengthLevel');

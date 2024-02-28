@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -13,6 +15,12 @@ class MapDisplay extends StatefulWidget {
 }
 // вставка удаление пораждают две табоицы
 class _MapDisplayState extends State<MapDisplay> {
+  late List histData;
+  @override
+  void initState() {
+    histData = ContainerExtractor.extract<Map>(valueContainer, 'historyData')['data'];
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return 
@@ -51,24 +59,14 @@ class _MapDisplayState extends State<MapDisplay> {
         initialZoom: 9.2,
       ),
       children: [
+        
         TileLayer(
           urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
           userAgentPackageName: 'com.example.app',
         ),
-
-        // Container(
-        //   color: Colors.amber,
-        //   height: 100,
-        // ),
-        // RichAttributionWidget(
-        //   attributions: [
-        //     TextSourceAttribution(
-        //       'OpenStreetMap contributors',
-        //       onTap: () =>
-        //           launchUrl(Uri.parse('https://openstreetmap.org/copyright')),
-        //     ),
-        //   ],
-        // ),
+        MarkerLayer(
+              markers: List.generate(histData.length, (index) => Marker(point: LatLng(histData[index]['currentLatitude'], histData[index]['currentLongitude']), child: Icon(Icons.place)))
+            ),
       ],
     ));
   }

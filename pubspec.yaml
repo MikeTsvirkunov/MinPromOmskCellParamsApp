@@ -45,6 +45,7 @@ dependencies:
   permission_handler: ^11.0.1
   path_provider: ^2.1.1
   google_maps_flutter: ^2.5.0
+  flutter_sliding_up_panel: ^2.1.1
 
 dev_dependencies:
   flutter_test:
