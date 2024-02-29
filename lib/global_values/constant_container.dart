@@ -7,26 +7,28 @@ import 'package:minprom_of_omsk_signal/processors/cell_params_setter.dart';
 import 'package:minprom_of_omsk_signal/processors/coords_params_setter.dart';
 import 'package:minprom_of_omsk_signal/processors/macro_action.dart';
 import 'package:minprom_of_omsk_signal/processors/neitral_params_processor.dart';
+import 'package:minprom_of_omsk_signal/processors/program_param_to_text_processor.dart';
 import 'package:minprom_of_omsk_signal/processors/save_data.dart';
 import 'package:minprom_of_omsk_signal/processors/set_history_data.dart';
 import 'package:minprom_of_omsk_signal/processors/set_loaded_data.dart';
+import 'package:minprom_of_omsk_signal/processors/time_processor.dart';
 import 'package:signal_strength/signal_strength.dart';
 
 ConstantContainer constantContainer = ConstantContainer(
   {
     'ExtraOptionsKeyProcessorMap': {
-      'street': NeitralParamProcessor(),
-      'mobileOperator': NeitralParamProcessor(),
-      'cellID': NeitralParamProcessor(),
-      'longitude': NeitralParamProcessor(),
-      'latitude': NeitralParamProcessor(),
-      'time': NeitralParamProcessor(),
-      'date': NeitralParamProcessor(),
-      'cellSignalStrength': NeitralParamProcessor(),
-      'currentDateTime': NeitralParamProcessor(),
-      'currentCellId': NeitralParamProcessor(),
-      'currentLatitude': NeitralParamProcessor(),
-      'currentLongitude': NeitralParamProcessor(),
+      'street': ProgramParamToTextProcessor(),
+      'mobileOperator': ProgramParamToTextProcessor(),
+      'cellID': ProgramParamToTextProcessor(),
+      'longitude': ProgramParamToTextProcessor(),
+      'latitude': ProgramParamToTextProcessor(),
+      'time': ProgramParamToTextProcessor(),
+      'date': ProgramParamToTextProcessor(),
+      'cellSignalStrength': ProgramParamToTextProcessor(),
+      'currentDateTime': ProgramParamToTextProcessor(),
+      'currentCellId': ProgramParamToTextProcessor(),
+      'currentLatitude': ProgramParamToTextProcessor(),
+      'currentLongitude': ProgramParamToTextProcessor(),
     },
     'ExtraOptionsValueProcessorMap': {
       'street': NeitralParamProcessor(),
@@ -37,7 +39,7 @@ ConstantContainer constantContainer = ConstantContainer(
       'time': NeitralParamProcessor(),
       'date': NeitralParamProcessor(),
       'cellSignalStrength': NeitralParamProcessor(),
-      'currentDateTime': NeitralParamProcessor(),
+      'currentDateTime': TimeProcessor(),
       'currentCellId': NeitralParamProcessor(),
       'currentLatitude': NeitralParamProcessor(),
       'currentLongitude': NeitralParamProcessor(),

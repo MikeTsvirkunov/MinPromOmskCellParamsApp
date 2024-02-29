@@ -8,7 +8,8 @@ import 'package:minprom_of_omsk_signal/container/container_extractor.dart';
 import 'package:minprom_of_omsk_signal/global_values/value_container.dart';
 
 class MapDisplay extends StatefulWidget {
-  const MapDisplay({Key? key}) : super(key: key);
+  final TabController controller;
+  const MapDisplay({Key? key, required this.controller}) : super(key: key);
 
   @override
   State<MapDisplay> createState() => _MapDisplayState();
@@ -25,12 +26,8 @@ class _MapDisplayState extends State<MapDisplay> {
   Widget build(BuildContext context) {
     return 
     Scaffold(
-      appBar: AppBar(
-        leading: Container(
-          color: Colors.amber,
-          height: 40,
-        ),
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButton: FloatingActionButton(onPressed: (){widget.controller.animateTo(0);}, child: Icon(Icons.arrow_back), shape: CircleBorder(), backgroundColor: Color(0xffffffff),),
       body: FlutterMap(
       options: MapOptions(
         interactionOptions: const InteractionOptions(
@@ -68,7 +65,13 @@ class _MapDisplayState extends State<MapDisplay> {
               markers: List.generate(histData.length, (index) => Marker(point: LatLng(histData[index]['currentLatitude'], histData[index]['currentLongitude']), child: Icon(Icons.place)))
             ),
       ],
-    ));
+    ),
+    // bottomNavigationBar: SlidingUpPanel(
+    //     panel: Center(
+    //       child: Text("This is the sliding Widget"),
+    //     ),
+    //   ),
+    );
   }
 }
 

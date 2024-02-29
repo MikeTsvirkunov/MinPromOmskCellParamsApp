@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:minprom_of_omsk_signal/app/data_page/history_data_block.dart';
+import 'package:minprom_of_omsk_signal/container/container_extractor.dart';
 import 'package:minprom_of_omsk_signal/container/default_container.dart';
+import 'package:minprom_of_omsk_signal/global_values/sorting_filters_container.dart';
+import 'package:minprom_of_omsk_signal/global_values/value_container.dart';
 
 List<Widget> buildListFromData(List data){
-  return List.generate(
+  var l = List.generate(
     data.length, 
     (index){
       Map<String, dynamic> params = {'ParamsValueMap': {}}; 
@@ -15,10 +18,15 @@ List<Widget> buildListFromData(List data){
       var p = DefaultContainer(
         params
       );
-      return HistoryDataBlock(
+      var hdb = HistoryDataBlock(
         cellStrenth: data[index]['cellSignalStrength'], notation: 'dBm', 
         params: p,
       );
+      return hdb;
     }
   );
+  int Function(HistoryDataBlock, HistoryDataBlock) filter = ContainerExtractor.extract(sortingFilterContainer,
+      ContainerExtractor.extract(valueContainer, 'HistoryData.CurrentFilter'));
+  l.sort(filter);
+  return l;
 }

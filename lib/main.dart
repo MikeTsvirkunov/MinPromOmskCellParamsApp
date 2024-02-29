@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:minprom_of_omsk_signal/app/functions/on_start_initiation.dart';
 import 'package:minprom_of_omsk_signal/app_widget.dart';
 import 'package:minprom_of_omsk_signal/checkers/require_premission.dart';
@@ -24,6 +25,7 @@ class _MainState extends State<Main> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,]);
     initiation = onStartInitiation();
   }
 
